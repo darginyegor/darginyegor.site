@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700,900|Roboto:400,700&subset=cyrillic');
+
+html, body {
+	width: 100vw;
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
+	background-color: #FFFFFF;
+	color: #000000;
+	font-family: 'Roboto', sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.ds-h1 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
+	font-size: 56px;
+	text-transform: uppercase;
+}
+
+.ds-h4 {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.ds-header {
+
+}
+
+.ds-section {
+
+}
+
+.ds-section__content {
+	padding: 64px 32px;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.ds-header__content {
+	padding-top: 32px;
+	display: flex;
+	justify-content: space-between;
+}
+
+/* Top section styles */
+
+.ds-h1__gradient {
+	-webkit-background-clip: text;
+	background-clip: text;
+  	-webkit-text-fill-color: transparent;
+}
+
+.ds-h1__gradient--green {
+	background-image: linear-gradient(to right bottom, #00FF94, #FFC700);
+}
+
+.ds-h1__gradient--blue {
+	background-image: linear-gradient(to right bottom, #00A3FF, #BD00FF);
+}
+
+.ds-h1__gradient--orange {
+	background-image: linear-gradient(to right bottom, #FF2E00, #FAFF00);
+}
