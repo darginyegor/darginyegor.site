@@ -26,12 +26,9 @@ html, body {
 	font-weight: 700;
 }
 
-.ds-header {
-
-}
-
-.ds-section {
-
+.ds-p {
+	font-size: 16px;
+	font-weight: 400;
 }
 
 .ds-section__content {
@@ -46,22 +43,16 @@ html, body {
 	justify-content: space-between;
 }
 
-/* Top section styles */
 
-.ds-h1__gradient {
-	-webkit-background-clip: text;
-	background-clip: text;
-  	-webkit-text-fill-color: transparent;
+/* 
+General modificators
+*/
+
+.--colored {
+	color: #1A6DE8;
 }
 
-.ds-h1__gradient--green {
-	background-image: linear-gradient(to right bottom, #00FF94, #FFC700);
-}
-
-.ds-h1__gradient--blue {
-	background-image: linear-gradient(to right bottom, #00A3FF, #BD00FF);
-}
-
-.ds-h1__gradient--orange {
-	background-image: linear-gradient(to right bottom, #FF2E00, #FAFF00);
+.--colored-light {
+	color: #1A6DE8;
+	opacity: .54;
 }
