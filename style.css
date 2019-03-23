@@ -33,6 +33,11 @@ html, body {
 	font-weight: 400;
 }
 
+.ds-section--black {
+	background: #000000;
+	color: #FFFFFF;
+}
+
 .ds-section__content {
 	padding: 64px 32px;
     max-width: 1024px;
@@ -91,6 +96,52 @@ Buttons
     background-image: url(img/arrow-button-go.svg);
     background-repeat: no-repeat;
     background-position: right 16px center;
+}
+
+/*
+Input
+*/
+
+.ds-input {
+	width: 496px;
+	margin-bottom: 48px;
+}
+
+.ds-input__label {
+    display: block;
+    color: rgba(255, 255, 255, .54);
+    margin-bottom: 12px;
+}
+
+.ds-input__input {
+	box-sizing: border-box;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.12);
+	font-size: 20px;
+    padding: 16px 24px;
+	color: white;
+	width: 100%;
+	transition: background-color .2s;
+}
+
+.ds-input__input:focus {
+	border-radius: 8px 8px 0 0;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.ds-input__underline {
+    height: 2px;
+    margin: -2px auto 0;
+    width: 100%;
+	background-color: #1A6DE8;
+	transform: scaleX(0);
+	transition: transform .2s;
+}
+
+.ds-input__input:focus + .ds-input__underline {
+	transform: scaleX(1);
 }
 
 /* 
