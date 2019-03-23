@@ -33,8 +33,12 @@ html, body {
 	font-weight: 400;
 }
 
+.ds-p--small {
+	font-size: 12px;
+}
+
 .ds-section--black {
-	background: #000000;
+	background-color: #000000;
 	color: #FFFFFF;
 }
 
@@ -84,11 +88,12 @@ Buttons
     outline: none;
     border-radius: 40px;
     padding: 14px 32px;
-    box-shadow: 0px 12px 24px rgba(0, 0, 0, .12);
+	box-shadow: 0px 12px 24px rgba(0, 0, 0, .12);
+	transition: transform .2s;
 }
 
 .ds-button:hover {
-	opacity: .8;
+	transform: scale(1.05);
 }
 
 .ds-button--go {
@@ -142,6 +147,19 @@ Input
 
 .ds-input__input:focus + .ds-input__underline {
 	transform: scaleX(1);
+}
+
+/*
+Footer
+*/
+
+.ds-footer {
+	background-color: #000000;
+	color: #424242;
+}
+
+.ds-footer__content {
+	padding: 32px 32px;
 }
 
 /* 
