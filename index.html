@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>darginyegor.site</title>
+	<title>darginyegor | Лэндинги, интерфейсы, полиграфия - дизайн</title>
 	<meta name="description" content="Дизайн посадочных страниц, интерфейсов, полиграфической продукции">
 	<link rel="stylesheet" href="style.css">
 </head>
@@ -44,15 +44,15 @@
 	<section class="ds-section ds-section--black" id="form">
 		<div class="ds-section__content">
 			<h1 class="ds-h1">Нужен дизайн?</h1>
-			<form>
+			<form name="request-form">
 				<div class="ds-input">
 					<label class="ds-input__label">Как к вам обращаться?</label>
-					<input type="text" class="ds-input__input">
+					<input name="name" type="text" class="ds-input__input">
 					<div class="ds-input__underline"></div>
 				</div>
 				<div class="ds-input ds-select">
 					<label class="ds-input__label">Что будем разрабатывать?</label>
-					<input type="text" class="ds-select__hidden-input" hidden>
+					<input type="text" name="product" class="ds-select__hidden-input" hidden>
 					<div class="ds-input__input ds-select__input">&nbsp;</div>
 					<div class="ds-select__dropdown">
 						<div class="ds-select__dropdown-item">Посадочную страницу (лэндинг)</div>
@@ -62,9 +62,9 @@
 						<div class="ds-select__dropdown-item">Что-то другое...</div>
 					</div>
 				</div>
-				<div class="ds-input">
+				<div class="ds-input ds-input--last">
 					<label class="ds-input__label">Оставите E-mail для связи?</label>
-					<input type="email" class="ds-input__input">
+					<input name="email" type="email" class="ds-input__input">
 					<div class="ds-input__underline"></div>
 				</div>
 				<button class="ds-button ds-button--go ds-button--submit">Отправить</button>
@@ -78,6 +78,7 @@
 	</footer>
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
+			// Anchor smooth scroll handler
 			document.querySelectorAll('[href*="#"]').forEach(function (each) {
 				each.addEventListener('click', function (event) {
 					event.preventDefault();
@@ -86,12 +87,14 @@
 				});
 			});
 
+			// Select opener
 			document.querySelectorAll('.ds-select__input').forEach(function (each) {
 				each.addEventListener('click', function (event) {
 					each.parentElement.querySelector('.ds-select__dropdown').classList.add('ds-select__dropdown--open');
 				});
 			});
 
+			// Select closer
 			document.querySelectorAll('.ds-select__dropdown-item').forEach(function (each) {
 				each.addEventListener('click', function (event) {
 					var dropdownElement = each.parentElement;
@@ -102,8 +105,34 @@
 					each.classList.add('ds-select__dropdown-item--selected');
 					dropdownElement.classList.remove('ds-select__dropdown--open');
 					dropdownElement.parentElement.querySelector('.ds-select__input').innerText = each.innerText;
+					dropdownElement.parentElement.querySelector('input').value = each.innerText;
+					dropdownElement.parentElement.classList.remove('ds-input--invalid');
 				});
 			});
+
+			// Input errors remover
+			document.querySelectorAll('input').forEach(function (each) {
+				each.addEventListener('keyup', function(event) {
+					const controlContainer = event.target.closest('.ds-input');
+					controlContainer.classList.remove('ds-input--invalid');
+				});
+			})
+
+			// Form submitter
+			document.querySelector('.ds-button--submit').addEventListener('click', function (event) {
+				event.preventDefault();
+				const formControls = document.forms['request-form'].elements;
+				for (var control of formControls) {
+					if (!control.name) continue;
+					var controlContainer = control.closest('.ds-input');
+					controlContainer.classList.remove('ds-input--invalid');
+					if (control.value) {
+						
+					} else {
+						controlContainer.classList.add('ds-input--invalid');
+					}
+				}
+			})
 		});
 	</script>
 </body>

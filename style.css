@@ -107,15 +107,42 @@ Buttons
 Input
 */
 
+@keyframes shake {
+    10%, 90% {
+		transform: translateX(-1px);
+	}
+    20%, 80% {
+		transform: translateX(2px);
+	}
+    30%, 50%, 70% {
+		transform: translateX(-4px);
+	}
+    40%, 60% {
+		transform: translateX(4px); 
+	}
+}
+
 .ds-input {
 	width: 496px;
 	margin-bottom: 48px;
+}
+
+.ds-input--last {
+	margin-bottom: 64px;
+}
+
+.ds-input--invalid {
+	animation: shake .4s;
 }
 
 .ds-input__label {
     display: block;
     color: rgba(255, 255, 255, .54);
     margin-bottom: 12px;
+}
+
+.ds-input--invalid .ds-input__label {
+	color: #FF1F00;
 }
 
 .ds-input__input {
