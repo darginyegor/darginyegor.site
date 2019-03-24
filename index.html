@@ -44,7 +44,7 @@
 	<section class="ds-section ds-section--black" id="form">
 		<div class="ds-section__content">
 			<h1 class="ds-h1">Нужен дизайн?</h1>
-			<form name="request-form">
+			<form class="ds-form" name="request-form">
 				<div class="ds-input">
 					<label class="ds-input__label">Как к вам обращаться?</label>
 					<input name="name" type="text" class="ds-input__input">
@@ -68,6 +68,13 @@
 					<div class="ds-input__underline"></div>
 				</div>
 				<button class="ds-button ds-button--go ds-button--submit">Отправить</button>
+				<div class="ds-form-result">
+					<div class="ds-form-result__content">
+						<div class="ds-form-result__icon"></div>
+						<h4 class="ds-h4"></h4>
+						<p class="ds-p"></p>
+					</div>
+				</div>
 			</form>
 		</div>
 	</section>
@@ -90,7 +97,9 @@
 			// Select opener
 			document.querySelectorAll('.ds-select__input').forEach(function (each) {
 				each.addEventListener('click', function (event) {
-					each.parentElement.querySelector('.ds-select__dropdown').classList.add('ds-select__dropdown--open');
+					const selectContainer = each.parentElement;
+					selectContainer.querySelector('.ds-select__dropdown').classList.add('ds-select__dropdown--open');
+					selectContainer.classList.remove('ds-input--complete');
 				});
 			});
 
@@ -112,26 +121,37 @@
 
 			// Input errors remover
 			document.querySelectorAll('input').forEach(function (each) {
-				each.addEventListener('keyup', function(event) {
+				each.addEventListener('focus', function(event) {
 					const controlContainer = event.target.closest('.ds-input');
-					controlContainer.classList.remove('ds-input--invalid');
-				});
+					controlContainer.classList.remove('ds-input--complete');
+				})
 			})
 
 			// Form submitter
 			document.querySelector('.ds-button--submit').addEventListener('click', function (event) {
 				event.preventDefault();
 				const formControls = document.forms['request-form'].elements;
+				var formValid = true;
+				var requestBody = {};
 				for (var control of formControls) {
 					if (!control.name) continue;
 					var controlContainer = control.closest('.ds-input');
 					controlContainer.classList.remove('ds-input--invalid');
 					if (control.value) {
-						
+						requestBody[control.name] = control.value;
+						controlContainer.classList.add('ds-input--complete');
 					} else {
 						controlContainer.classList.add('ds-input--invalid');
+						formValid = false;
 					}
 				}
+				if (!formValid) return;
+				var xhr = new XMLHttpRequest();
+				xhr.open('POST', 'https://localhost:3000/request');
+				xhr.send(JSON.stringify(requestBody));
+				xhr.addEventListener('readystatechange', function(event) {
+					console.log(this);
+				})
 			})
 		});
 	</script>
