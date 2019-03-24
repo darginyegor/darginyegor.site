@@ -50,6 +50,18 @@
 					<input type="text" class="ds-input__input">
 					<div class="ds-input__underline"></div>
 				</div>
+				<div class="ds-input ds-select">
+					<label class="ds-input__label">Что будем разрабатывать?</label>
+					<input type="text" class="ds-select__hidden-input" hidden>
+					<div class="ds-input__input ds-select__input">&nbsp;</div>
+					<div class="ds-select__dropdown">
+						<div class="ds-select__dropdown-item">Посадочную страницу (лэндинг)</div>
+						<div class="ds-select__dropdown-item">Интернет-магазин</div>
+						<div class="ds-select__dropdown-item">Веб-приложение/систему</div>
+						<div class="ds-select__dropdown-item">Полиграфическую продукцию</div>
+						<div class="ds-select__dropdown-item">Что-то другое...</div>
+					</div>
+				</div>
 				<div class="ds-input">
 					<label class="ds-input__label">Оставите E-mail для связи?</label>
 					<input type="email" class="ds-input__input">
@@ -64,6 +76,35 @@
 			<p class="ds-p ds-p--small">Example footer text</p>
 		</div>
 	</footer>
-</body>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			document.querySelectorAll('[href*="#"]').forEach(function (each) {
+				each.addEventListener('click', function (event) {
+					event.preventDefault();
+					const elementID = each.getAttribute("href").substr(1);
+					document.getElementById(elementID).scrollIntoView({ behavior: 'smooth', block: 'start', inline: "nearest" });
+				});
+			});
 
+			document.querySelectorAll('.ds-select__input').forEach(function (each) {
+				each.addEventListener('click', function (event) {
+					each.parentElement.querySelector('.ds-select__dropdown').classList.add('ds-select__dropdown--open');
+				});
+			});
+
+			document.querySelectorAll('.ds-select__dropdown-item').forEach(function (each) {
+				each.addEventListener('click', function (event) {
+					var dropdownElement = each.parentElement;
+					var dropdownItems = dropdownElement.children;
+					for (var item of dropdownItems) {
+						item.classList.remove('ds-select__dropdown-item--selected');
+					}
+					each.classList.add('ds-select__dropdown-item--selected');
+					dropdownElement.classList.remove('ds-select__dropdown--open');
+					dropdownElement.parentElement.querySelector('.ds-select__input').innerText = each.innerText;
+				});
+			});
+		});
+	</script>
+</body>
 </html>
