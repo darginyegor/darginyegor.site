@@ -33,6 +33,11 @@ html, body {
 	font-weight: 400;
 }
 
+.ds-wrapper {
+	position: relative;
+	display: inline-block;
+}
+
 .ds-p--small {
 	font-size: 12px;
 }
@@ -108,8 +113,12 @@ Form
 */
 
 .ds-form {
-	display: inline-block;
-	position: relative;
+	transition: opacity 10s;
+}
+
+.ds-form--disabled {
+	pointer-events: none;
+	opacity: 0;
 }
 
 /*

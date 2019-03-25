@@ -44,30 +44,32 @@
 	<section class="ds-section ds-section--black" id="form">
 		<div class="ds-section__content">
 			<h1 class="ds-h1">Нужен дизайн?</h1>
-			<form class="ds-form" name="request-form">
-				<div class="ds-input">
-					<label class="ds-input__label">Как к вам обращаться?</label>
-					<input name="name" type="text" class="ds-input__input">
-					<div class="ds-input__underline"></div>
-				</div>
-				<div class="ds-input ds-select">
-					<label class="ds-input__label">Что будем разрабатывать?</label>
-					<input type="text" name="product" class="ds-select__hidden-input" hidden>
-					<div class="ds-input__input ds-select__input">&nbsp;</div>
-					<div class="ds-select__dropdown">
-						<div class="ds-select__dropdown-item">Посадочную страницу (лэндинг)</div>
-						<div class="ds-select__dropdown-item">Интернет-магазин</div>
-						<div class="ds-select__dropdown-item">Веб-приложение/систему</div>
-						<div class="ds-select__dropdown-item">Полиграфическую продукцию</div>
-						<div class="ds-select__dropdown-item">Что-то другое...</div>
+			<div class="ds-wrapper">
+				<form class="ds-form" name="request-form">
+					<div class="ds-input">
+						<label class="ds-input__label">Как к вам обращаться?</label>
+						<input name="name" type="text" class="ds-input__input">
+						<div class="ds-input__underline"></div>
 					</div>
-				</div>
-				<div class="ds-input ds-input--last">
-					<label class="ds-input__label">Оставите E-mail для связи?</label>
-					<input name="email" type="email" class="ds-input__input">
-					<div class="ds-input__underline"></div>
-				</div>
-				<button class="ds-button ds-button--go ds-button--submit">Отправить</button>
+					<div class="ds-input ds-select">
+						<label class="ds-input__label">Что будем разрабатывать?</label>
+						<input type="text" name="product" class="ds-select__hidden-input" hidden>
+						<div class="ds-input__input ds-select__input">&nbsp;</div>
+						<div class="ds-select__dropdown">
+							<div class="ds-select__dropdown-item">Посадочную страницу (лэндинг)</div>
+							<div class="ds-select__dropdown-item">Интернет-магазин</div>
+							<div class="ds-select__dropdown-item">Веб-приложение/систему</div>
+							<div class="ds-select__dropdown-item">Полиграфическую продукцию</div>
+							<div class="ds-select__dropdown-item">Что-то другое...</div>
+						</div>
+					</div>
+					<div class="ds-input ds-input--last">
+						<label class="ds-input__label">Оставите E-mail для связи?</label>
+						<input name="email" type="email" class="ds-input__input">
+						<div class="ds-input__underline"></div>
+					</div>
+					<button class="ds-button ds-button--go ds-button--submit">Отправить</button>
+				</form>
 				<div class="ds-form-result">
 					<div class="ds-form-result__content">
 						<div class="ds-form-result__icon"></div>
@@ -75,7 +77,7 @@
 						<p class="ds-p"></p>
 					</div>
 				</div>
-			</form>
+			</div>
 		</div>
 	</section>
 	<footer class="ds-section ds-footer">
@@ -85,6 +87,7 @@
 	</footer>
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
+			const serverURL = 'http://localhost:3000';
 			// Anchor smooth scroll handler
 			document.querySelectorAll('[href*="#"]').forEach(function (each) {
 				each.addEventListener('click', function (event) {
@@ -130,7 +133,8 @@
 			// Form submitter
 			document.querySelector('.ds-button--submit').addEventListener('click', function (event) {
 				event.preventDefault();
-				const formControls = document.forms['request-form'].elements;
+				const form = document.forms['request-form'];
+				const formControls = form.elements;
 				var formValid = true;
 				var requestBody = {};
 				for (var control of formControls) {
@@ -146,8 +150,9 @@
 					}
 				}
 				if (!formValid) return;
+				form.classList.add('ds-form--disabled');
 				var xhr = new XMLHttpRequest();
-				xhr.open('POST', 'https://localhost:3000/request');
+				xhr.open('POST', serverURL + '/request');
 				xhr.send(JSON.stringify(requestBody));
 				xhr.addEventListener('readystatechange', function(event) {
 					if (this.readyState == 4) {
