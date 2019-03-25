@@ -116,6 +116,12 @@ Form
 Form result overlay
 */
 
+@keyframes scale {
+	from {
+		transform: scale(0);
+	}
+}
+
 .ds-form-result {
 	display: none;
 	position: absolute;
@@ -123,7 +129,8 @@ Form result overlay
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000000;
+	background-color: #000000;
+	animation: opacity .3s;
 }
 
 .ds-form-result--visible {
@@ -139,11 +146,17 @@ Form result overlay
 .ds-form-result__icon {
 	width: 128px;
 	height: 128px;
+	margin: auto;
 	background: no-repeat center center;
+	animation: scale .3s;
 }
 
 .ds-form-result__icon--success {
 	background-image: url(img/form-result-success.svg);
+}
+
+.ds-form-result__icon--error {
+	background-image: url(img/form-result-error.svg);
 }
 
 /*

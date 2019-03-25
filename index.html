@@ -150,7 +150,15 @@
 				xhr.open('POST', 'https://localhost:3000/request');
 				xhr.send(JSON.stringify(requestBody));
 				xhr.addEventListener('readystatechange', function(event) {
-					console.log(this);
+					if (this.readyState == 4) {
+						const error = (this.status != 200);
+						const formResult = document.querySelector('.ds-form-result');
+						const iconClassModifier = error ? 'error' : 'success';
+						formResult.querySelector('.ds-form-result__icon').classList.add('ds-form-result__icon--' + iconClassModifier);
+						formResult.querySelector('.ds-h4').innerText = error ? 'Что-то не так...' : 'Готово';
+						formResult.querySelector('.ds-p').innerText = error ? 'Не удалось отправить данные!' : 'Ваша заявка отправлена.';
+						formResult.classList.add('ds-form-result--visible');
+					}
 				})
 			})
 		});
