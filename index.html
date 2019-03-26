@@ -70,11 +70,21 @@
 					</div>
 					<button class="ds-button ds-button--go ds-button--submit">Отправить</button>
 				</form>
-				<div class="ds-form-result">
+				<div class="ds-form-result ds-form-result--success">
 					<div class="ds-form-result__content">
-						<div class="ds-form-result__icon"></div>
-						<h4 class="ds-h4"></h4>
-						<p class="ds-p"></p>
+						<div class="ds-form-result__icon ds-form-result__icon--success"></div>
+						<h4 class="ds-h4">Готово!</h4>
+						<p class="ds-p">
+							<span class="ds-form-result__slot"></span>, ваши данные отправлены.<br>
+							Я свзяжусь с вами в ближайшее время.
+						</p>
+					</div>
+				</div>
+				<div class="ds-form-result ds-form-result--error">
+					<div class="ds-form-result__content">
+						<div class="ds-form-result__icon ds-form-result__icon--error"></div>
+						<h4 class="ds-h4">Что-то не так...</h4>
+						<p class="ds-p">Не удалось отправить заявку.</p>
 					</div>
 				</div>
 			</div>
@@ -157,15 +167,12 @@
 				xhr.addEventListener('readystatechange', function(event) {
 					if (this.readyState == 4) {
 						const error = (this.status != 200);
-						const formResult = document.querySelector('.ds-form-result');
-						const iconClassModifier = error ? 'error' : 'success';
-						formResult.querySelector('.ds-form-result__icon').classList.add('ds-form-result__icon--' + iconClassModifier);
-						formResult.querySelector('.ds-h4').innerText = error ? 'Что-то не так...' : 'Готово';
-						formResult.querySelector('.ds-p').innerText = error ? 'Не удалось отправить данные!' : 'Ваша заявка отправлена.';
+						const resultClassModifier = error ? 'error' : 'success';
+						const formResult = document.querySelector('.ds-form-result--' + resultClassModifier);
 						formResult.classList.add('ds-form-result--visible');
 					}
-				})
-			})
+				});
+			});
 		});
 	</script>
 </body>
