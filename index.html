@@ -146,6 +146,9 @@
 						controlContainer.classList.add('ds-input--complete');
 					} else {
 						controlContainer.classList.add('ds-input--invalid');
+						setTimeout(function(element) {
+							return element.classList.remove('ds-input--invalid');
+						}, 1000, controlContainer);
 						formValid = false;
 					}
 				}
