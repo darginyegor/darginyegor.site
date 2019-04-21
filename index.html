@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>darginyegor | Лэндинги, интерфейсы, полиграфия - дизайн</title>
-	<meta name="description" content="Дизайн посадочных страниц, интерфейсов, полиграфической продукции">
+	<meta name="description" content="Дизайн посадочных страниц, интерфейсов, полиграфической продукции.">
 	<link rel="stylesheet" href="style.css">
 </head>
 
@@ -96,6 +96,8 @@
 		</div>
 	</footer>
 	<script>
+		'use strict';
+
 		document.addEventListener('DOMContentLoaded', function () {
 			const serverURL = 'http://localhost:3000';
 			// Anchor smooth scroll handler
@@ -162,7 +164,7 @@
 				if (!formValid) return;
 				form.classList.add('ds-form--disabled');
 				var xhr = new XMLHttpRequest();
-				xhr.open('POST', serverURL + '/request');
+				xhr.open('POST', 'https://formspree.io/darginyegor.design@gmail.com');
 				xhr.send(JSON.stringify(requestBody));
 				xhr.addEventListener('readystatechange', function(event) {
 					if (this.readyState == 4) {
