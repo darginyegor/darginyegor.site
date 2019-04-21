@@ -205,14 +205,14 @@ Input
 	opacity: .25;
 }
 
+.ds-input--complete:hover {
+	opacity: 1;
+}
+
 .ds-input__label {
     display: block;
     color: rgba(255, 255, 255, .54);
     margin-bottom: 12px;
-}
-
-.ds-input--invalid .ds-input__label {
-	/* color: #FF1F00; */
 }
 
 .ds-input__input {
