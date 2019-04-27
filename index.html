@@ -40,7 +40,7 @@
 	</div>
 	<section class="ds-section" id="portfolio">
 		<div class="ds-portfolio-item__wrapper" style="background-color: #E6D0F6">
-			<div class="ds-portfolio-item">
+			<a class="ds-portfolio-item" href="portfolio/saikt">
 				<div class="ds-portfolio-item__info">
 					<img src="img/portfolio/saikt-logo.png" alt="" class="ds-portfolio-item__logo">
 					<p class="ds-p ds-portfolio-item__description">
@@ -56,10 +56,10 @@
 				<div class="ds-portfolio-item__preview">
 					<img src="img/portfolio/saikt-preview.png" alt="">
 				</div>
-			</div>
+			</a>
 		</div>
 		<div class="ds-portfolio-item__wrapper" style="background-color: #002C47">
-			<div class="ds-portfolio-item ds-portfolio-item--dark">
+			<a class="ds-portfolio-item ds-portfolio-item--dark" href="portfolio/fincase">
 				<div class="ds-portfolio-item__info">
 					<img src="img/portfolio/fincase-logo.png" alt="" class="ds-portfolio-item__logo">
 					<p class="ds-p ds-portfolio-item__description">
@@ -74,7 +74,7 @@
 				<div class="ds-portfolio-item__preview">
 					<img src="img/portfolio/fincase-preview.png" alt="">
 				</div>
-			</div>
+			</a>
 		</div>
 	</section>
 	<section class="ds-section ds-section--black" id="form">
@@ -136,39 +136,9 @@
 
 		document.addEventListener('DOMContentLoaded', function () {
 			const serverURL = 'http://localhost:3000';
-			// Anchor smooth scroll handler
-			document.querySelectorAll('[href*="#"]').forEach(function (each) {
-				each.addEventListener('click', function (event) {
-					event.preventDefault();
-					const elementID = each.getAttribute("href").substr(1);
-					document.getElementById(elementID).scrollIntoView({ behavior: 'smooth', block: 'start', inline: "nearest" });
-				});
-			});
 
-			// Select opener
-			document.querySelectorAll('.ds-select__input').forEach(function (each) {
-				each.addEventListener('click', function (event) {
-					const selectContainer = each.parentElement;
-					selectContainer.querySelector('.ds-select__dropdown').classList.add('ds-select__dropdown--open');
-					selectContainer.classList.remove('ds-input--complete');
-				});
-			});
-
-			// Select closer
-			document.querySelectorAll('.ds-select__dropdown-item').forEach(function (each) {
-				each.addEventListener('click', function (event) {
-					var dropdownElement = each.parentElement;
-					var dropdownItems = dropdownElement.children;
-					for (var item of dropdownItems) {
-						item.classList.remove('ds-select__dropdown-item--selected');
-					}
-					each.classList.add('ds-select__dropdown-item--selected');
-					dropdownElement.classList.remove('ds-select__dropdown--open');
-					dropdownElement.parentElement.querySelector('.ds-select__input').innerText = each.innerText;
-					dropdownElement.parentElement.querySelector('input').value = each.innerText;
-					dropdownElement.parentElement.classList.remove('ds-input--invalid');
-				});
-			});
+			smoothScrollForAnchors();
+			initSelects();
 
 			// Input errors remover
 			document.querySelectorAll('input').forEach(function (each) {
@@ -215,6 +185,42 @@
 				});
 			});
 		});
+
+		function smoothScrollForAnchors() {
+			document.querySelectorAll('[href*="#"]').forEach(function (each) {
+				each.addEventListener('click', function (event) {
+					event.preventDefault();
+					const elementID = each.getAttribute("href").substr(1);
+					document.getElementById(elementID).scrollIntoView({ behavior: 'smooth', block: 'start', inline: "nearest" });
+				});
+			});
+		}
+
+		function initSelects() {
+			// Open
+			document.querySelectorAll('.ds-select__input').forEach(function (each) {
+				each.addEventListener('click', function (event) {
+					const selectContainer = each.parentElement;
+					selectContainer.querySelector('.ds-select__dropdown').classList.add('ds-select__dropdown--open');
+					selectContainer.classList.remove('ds-input--complete');
+				});
+			});
+			// Close
+			document.querySelectorAll('.ds-select__dropdown-item').forEach(function (each) {
+				each.addEventListener('click', function (event) {
+					var dropdownElement = each.parentElement;
+					var dropdownItems = dropdownElement.children;
+					for (var item of dropdownItems) {
+						item.classList.remove('ds-select__dropdown-item--selected');
+					}
+					each.classList.add('ds-select__dropdown-item--selected');
+					dropdownElement.classList.remove('ds-select__dropdown--open');
+					dropdownElement.parentElement.querySelector('.ds-select__input').innerText = each.innerText;
+					dropdownElement.parentElement.querySelector('input').value = each.innerText;
+					dropdownElement.parentElement.classList.remove('ds-input--invalid');
+				});
+			});
+		}
 	</script>
 </body>
 </html>
