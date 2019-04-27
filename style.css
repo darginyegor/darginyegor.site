@@ -122,6 +122,10 @@ Portfolio
 	flex-direction: row;
 }
 
+.ds-portfolio-item--dark {
+	color: white;
+}
+
 .ds-portfolio-item__info {
 	flex-basis: 50%;
 }
@@ -145,12 +149,20 @@ Portfolio
 	cursor: pointer;
 }
 
+.ds-portfolio-item--dark .ds-portfolio-item__tag {
+	background-color: rgba(255, 255, 255, .54);
+}
+
 .ds-portfolio-item__tag::before {
 	content: '#';
 }
 
 .ds-portfolio-item__tag:hover {
 	background-color: rgba(0, 0, 0, .64);
+}
+
+.ds-portfolio-item--dark .ds-portfolio-item__tag:hover {
+	background-color: rgba(255, 255, 255, .64);
 }
 
 .ds-portfolio-item__preview {
