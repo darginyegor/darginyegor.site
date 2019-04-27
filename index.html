@@ -138,6 +138,7 @@
 			const serverURL = 'http://localhost:3000';
 
 			smoothScrollForAnchors();
+			initTags();
 			initSelects();
 
 			// Input errors remover
@@ -219,6 +220,15 @@
 					dropdownElement.parentElement.querySelector('input').value = each.innerText;
 					dropdownElement.parentElement.classList.remove('ds-input--invalid');
 				});
+			});
+		}
+
+		function initTags() {
+			document.querySelectorAll('.ds-portfolio-item__tag').forEach(function (each) {
+				each.addEventListener('click', function(event) {
+					event.preventDefault();
+					alert('Triggered ' + event.target.innerText + ' tag filter.');
+				})
 			});
 		}
 	</script>
