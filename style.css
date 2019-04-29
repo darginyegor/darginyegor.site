@@ -191,6 +191,10 @@ Portfolio
 	transition: transform .3s;
 }
 
+.ds-protfolio-item__preview-img {
+	max-width: 100%;
+}
+
 .ds-portfolio-item:hover .ds-portfolio-item__preview {
 	transform: none;
 }
@@ -424,4 +428,36 @@ General modificators
 
 .--ds-hidden {
 	display: none;
+}
+
+/*
+Adaptive styles for < 768px
+*/
+
+@media(max-width: 767px) {
+	.ds-h1 {
+		font-size: 28px;
+	}
+
+	.ds-button {
+		padding: 12px 24px;
+		font-size: 18px;
+	}
+	
+	.ds-button--go {
+		padding-right: 48px;
+		background-size: 24px;
+	}
+
+	.ds-h4 {
+		font-size: 20px;
+	}
+
+	.ds-p {
+		font-size: 14px;
+	}
+
+	.ds-portfolio-item {
+		flex-direction: column;
+	}
 }
