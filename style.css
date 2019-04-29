@@ -93,7 +93,7 @@ Buttons
     border: none;
     outline: none;
     border-radius: 40px;
-    padding: 14px 32px;
+    padding: 16px 32px;
 	box-shadow: 0px 12px 24px rgba(0, 0, 0, .12);
 	transition: transform .2s;
 }
@@ -107,6 +107,19 @@ Buttons
     background-image: url(img/arrow-button-go.svg);
     background-repeat: no-repeat;
     background-position: right 16px center;
+}
+
+.ds-button--mail {
+	padding-right: 72px;
+    background-image: url(img/background-button-mail.svg);
+    background-repeat: no-repeat;
+	background-position: right 24px top 14px;
+	transition: background-position .2s, transform .2s;
+}
+
+.ds-button--mail:hover {
+    background-position: right 24px top -49px;
+
 }
 
 /*
@@ -407,4 +420,8 @@ General modificators
 .--ds-colored-light {
 	color: #1A6DE8;
 	opacity: .54;
+}
+
+.--ds-hidden {
+	display: none;
 }
