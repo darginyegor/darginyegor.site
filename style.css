@@ -77,6 +77,34 @@ html, body {
 }
 
 /*
+Links 
+*/
+
+.ds-a {
+	color: #1A6DE8;
+	text-decoration: none;
+}
+
+.ds-a--external {
+	display: inline-block;
+	padding-left: 36px;
+	background-repeat: no-repeat;
+	background-image: url(img/link-external.svg);
+	line-height: 24px;
+}
+
+.ds-header__back {
+	display: block;
+	text-decoration: none;
+	color: rgba(0, 0, 0, .54);
+	font-size: 12px;
+	padding-left: 36px;
+	background-repeat: no-repeat;
+	background-image: url(img/arrow-button-back.svg);
+	line-height: 24px;
+}
+
+/*
 Buttons 
 */
 
@@ -423,6 +451,10 @@ General modificators
 
 .--ds-colored-light {
 	color: #1A6DE8;
+	opacity: .54;
+}
+
+.--ds-light {
 	opacity: .54;
 }
 
