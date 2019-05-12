@@ -47,16 +47,38 @@ html, body {
 	color: #FFFFFF;
 }
 
+.ds-section--dark {
+	background-color: #212121;
+	color: #FFFFFF;
+}
+
 .ds-section__content {
 	padding: 64px 32px;
     max-width: 1024px;
     margin: 0 auto;
 }
 
+.ds-section__content--bottom {
+	padding-bottom: 0;
+}
+
 .ds-header__content {
 	padding-top: 32px;
 	display: flex;
 	justify-content: space-between;
+}
+
+.ds-adaptive-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.ds-adaptive-row__column:first-child {
+	margin-right: 24px;
+}
+
+.ds-adaptive-row__column:last-child {
+	margin-left: 24px;
 }
 
 .ds-separator {
@@ -456,6 +478,10 @@ General modificators
 
 .--ds-light {
 	opacity: .54;
+}
+
+.--ds-shadow {
+	filter: drop-shadow(0px 12px 16px rgba(0, 0, 0, .25));
 }
 
 .--ds-hidden {
