@@ -91,7 +91,13 @@ function initTags() {
 	document.querySelectorAll('.ds-portfolio-item__tag').forEach(function (each) {
 		each.addEventListener('click', function (event) {
 			event.preventDefault();
-			alert('Triggered ' + event.target.innerText + ' tag filter.');
+			document.querySelectorAll('.ds-portfolio-item').forEach(function (each) {
+				if (each.innerHTML.indexOf(event.target.innerText) >= 0) {
+					each.classList.remove('--ds-hidden');
+				} else {
+					each.classList.add('--ds-hidden');
+				}
+			});
 		})
 	});
 }
